@@ -7,6 +7,7 @@ const app = express();
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true})); // For POST queries
 
 app.use('/', homePage);
 app.use('/courses', coursesPage);

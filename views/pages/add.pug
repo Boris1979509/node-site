@@ -3,3 +3,17 @@ block title
     title= title
 block content
     h1= title
+    form(action='/add', method='POST')
+        .form-group
+            label(for='title') Title
+            input#title.form-control.is-valid(type='text', name='title')
+            div.valid-feedback Error
+        .form-group
+            label(for='price') Price
+            input#price.form-control.is-valid(type='number', name='price')
+            div.valid-feedback Error
+        .form-group
+            label(for='img') Image
+            input#img.form-control.is-valid(type='text', name='image')
+            div.valid-feedback Error
+        button.btn.btn-primary(type='submit') Add courses
