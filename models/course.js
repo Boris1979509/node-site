@@ -45,7 +45,7 @@ class Course {
                     if (err) {
                         reject(err);
                     } else {
-                            resolve(JSON.parse(content));
+                        resolve(JSON.parse(content));
                     }
                 });
         });
