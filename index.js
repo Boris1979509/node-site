@@ -1,19 +1,18 @@
 const express = require('express');
+const homePage = require('./routes/home');
+const coursesPage = require('./routes/courses');
+const addPage = require('./routes/add');
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('pages/home', {title: 'Home page', isHome: true});
-});
-app.get('/courses', (req, res) => {
-    res.render('pages/courses', {title: 'Courses page', isCourses: true});
-});
-app.get('/add', (req, res) => {
-    res.render('pages/add', {title: 'Add page', isAdd: true});
-});
+app.use('/', homePage);
+app.use('/courses', coursesPage);
+app.use('/add', addPage);
+
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
