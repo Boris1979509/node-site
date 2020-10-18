@@ -1,0 +1,9 @@
+extends  ../app/index
+block title
+    title= title
+block content
+    h1= title
+    if(course)
+        div.course
+            img(src= course.image, alt= course.title)
+            p.price= course.price
