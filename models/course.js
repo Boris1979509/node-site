@@ -3,6 +3,12 @@ const fs = require('fs');
 const path = require('path');
 
 class Course {
+    /**
+     *
+     * @param title
+     * @param price
+     * @param image
+     */
     constructor(title, price, image) {
         this.title = title;
         this.price = price;
@@ -10,6 +16,10 @@ class Course {
         this.id = uuid.v4();
     }
 
+    /**
+     *
+     * @returns {{image: *, price: *, _id, title: *}}
+     */
     toJson() {
         return {
             title: this.title,
@@ -19,6 +29,10 @@ class Course {
         };
     }
 
+    /**
+     *
+     * @returns {Promise}
+     */
     async save() {
         const courses = await Course.getAll();
         courses.push(this.toJson());
@@ -36,6 +50,10 @@ class Course {
         });
     }
 
+    /**
+     *
+     * @returns {Promise}
+     */
     static getAll() {
         return new Promise((resolve, reject) => {
             fs.readFile(

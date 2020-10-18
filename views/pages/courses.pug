@@ -3,3 +3,12 @@ block title
     title= title
 block content
     h1= title
+    if (courses.length)
+        div.card-columns
+            each val, index in courses
+                .card
+                    img.card-img-top(src= val.image, alt= val.title)
+                    .card-body
+                        h5.card-title= val.title
+                        p.card-text= `${val.price} $`
+                        a.btn.btn-primary.stretched-link(href= `/courses/${val._id}`) Go somewhere
