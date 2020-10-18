@@ -10,5 +10,5 @@ block content
                     img.card-img-top(src= val.image, alt= val.title)
                     .card-body
                         h5.card-title= val.title
-                        p.card-text= `${val.price} $`
+                        p.card-text.price= val.price
                         a.btn.btn-primary.stretched-link(href= `/courses/${val._id}`) Go somewhere

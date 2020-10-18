@@ -1,3 +1,7 @@
 .active > a.nav-link {
     text-decoration: underline;
 }
+
+.price {
+    font-size: 2rem;
+}
