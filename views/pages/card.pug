@@ -1,0 +1,24 @@
+extends  ../app/index
+block title
+    title= title
+block content
+    h1= title
+    if (card.length)
+        table.table.table-striped
+            thead
+                tr
+                    th Название
+                    th Кол-во
+                    th Действие
+            tbody
+                each val in card
+                    tr
+                        td= val.title
+                        td= val.count
+                        td
+                            button.btn.btn-danger Удалить
+        p
+            strong Товаров на сумму
+                span.price= total
+    else
+        .alert.alert-info Ваша корзина пуста.

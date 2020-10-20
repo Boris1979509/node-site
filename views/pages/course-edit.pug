@@ -1,0 +1,20 @@
+extends  ../app/index
+block title
+    title= title
+block content
+    h1= title
+    form(action='/courses/edit', method='POST')
+        input(type='hidden', name='_id', value= course._id)
+        .form-group
+            label(for='title') Title
+            input#title.form-control.is-valid(type='text', name='title', value= course.title)
+            div.valid-feedback Error
+        .form-group
+            label(for='price') Price
+            input#price.form-control.is-valid(type='number', name='price', value= course.price)
+            div.valid-feedback Error
+        .form-group
+            label(for='img') Image
+            input#img.form-control.is-valid(type='text', name='image', value= course.image)
+            div.valid-feedback Error
+        button.btn.btn-primary(type='submit') Обновить курс

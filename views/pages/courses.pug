@@ -4,11 +4,16 @@ block title
 block content
     h1= title
     if (courses.length)
-        div.card-columns
-            each val, index in courses
-                .card
-                    img.card-img-top(src= val.image, alt= val.title)
-                    .card-body
-                        h5.card-title= val.title
-                        p.card-text.price= val.price
-                        a.btn.btn-primary.stretched-link(href= `/courses/${val._id}`) Открыть курс
+    div.card-columns
+        each val in courses
+            .card
+                img.card-img-top(src= val.image, alt= val.title)
+                .card-body
+                    h5.card-title= val.title
+                    p.card-text.price= val.price
+                    div.d-flex.justify-content-between
+                        a.btn.btn-primary(href= `/courses/${val._id}`) Открыть курс
+                        a.btn.btn-primary(href= `/courses/${val._id}/edit?allow=true`) Редактировать курс
+                    form(action='/card/add', method='POST').mt-3
+                        input(type='hidden', name='_id', value= val._id)
+                        button(type='submit').btn.btn-danger.btn-block В корзину

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Course = require('../models/course');
 router.get('/', (req, res) => {
-    res.render('pages/add', {title: 'Add courses', isAdd: true});
+    res.render('pages/add', {title: 'Добавить курс', isAdd: true});
 });
 
 router.post('/', async (req, res) => {

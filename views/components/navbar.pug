@@ -6,9 +6,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         ul.navbar-nav
             li(class=`nav-item${(isHome) ? ' active' : ''}`)
                 a.nav-link(href='/')
-                    | Home
+                    | Главная
                     span.sr-only (current)
             li(class=`nav-item${(isCourses) ? ' active' : ''}`)
-                a.nav-link(href='/courses') Course
+                a.nav-link(href='/courses') Курсы
             li(class=`nav-item${(isAdd) ? ' active' : ''}`)
-                a.nav-link(href='/add') Add courses
+                a.nav-link(href='/add') Добавить курс
+            li(class=`nav-item${(isCard) ? ' active' : ''}`)
+                a.nav-link(href='/card/add') Корзина
