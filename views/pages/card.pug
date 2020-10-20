@@ -3,22 +3,23 @@ block title
     title= title
 block content
     h1= title
-    if (card.length)
-        table.table.table-striped
-            thead
-                tr
-                    th Название
-                    th Кол-во
-                    th Действие
-            tbody
-                each val in card
+    #user-card
+        if (card.length)
+            table.table.table-striped
+                thead
                     tr
-                        td= val.title
-                        td= val.count
-                        td
-                            button.btn.btn-danger Удалить
-        p
-            strong Товаров на сумму
-                span.price= total
-    else
-        .alert.alert-info Ваша корзина пуста.
+                        th Название
+                        th Кол-во
+                        th Действие
+                tbody
+                    each val in card
+                        tr
+                            td= val.title
+                            td= val.count
+                            td
+                                button.btn.btn-danger.btn-sm.remove-item(data-id= val._id) Удалить
+            p
+                strong Товаров на сумму:
+                strong.price= total
+        else
+            .alert.alert-info Ваша корзина пуста.
