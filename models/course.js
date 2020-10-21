@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const course = new Schema({
+const courseSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -9,7 +9,12 @@ const course = new Schema({
         type: Number,
         required: true
     },
-    image: String
+    image: String,
+    userId: { // Relations
+        type: Schema.Types.ObjectId, // Тип id строка с которой работает mongodb по умолчанию
+        ref: 'User', // References on User model
+        required: true
+    }
 });
 
-module.exports = model('Course', course);
+module.exports = model('Course', courseSchema);

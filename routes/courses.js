@@ -2,7 +2,8 @@ const router = require('express').Router();
 const Course = require('../models/course');
 
 router.get('/', async (req, res) => {
-    const courses = await Course.find();
+    const courses = await Course.find().populate('userId', 'email name');
+    console.log(courses);
     res.render('pages/courses', {
         title: 'Курсы',
         isCourses: true,
