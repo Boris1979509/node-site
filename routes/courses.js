@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Course = require('../models/course');
 
 router.get('/', async (req, res) => {
-    const courses = await Course.getAll();
+    const courses = await Course.find();
     res.render('pages/courses', {
         title: 'Курсы',
         isCourses: true,
@@ -11,12 +11,12 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:_id', async (req, res) => {
-    const course = await Course.getById(req.params._id);
+    const course = await Course.findById(req.params._id);
     res.render('pages/course', {title: course.title, course});
 });
 /* Edit course */
 router.get('/:_id/edit', async (req, res) => {
-    const course = await Course.getById(req.params._id);
+    const course = await Course.findById(req.params._id);
     if (!req.query.allow) {
         return res.redirect('/');
     }
@@ -25,9 +25,24 @@ router.get('/:_id/edit', async (req, res) => {
         course
     });
 });
-/* Course update POST */
+/* Update course */
 router.post('/edit', async (req, res) => {
-    await Course.update(req.body);
+    await Course.findByIdAndUpdate(req.body._id, {
+        $set: {
+            title: req.body.title,
+            price: req.body.price,
+            image: req.body.image
+        }
+    });
     res.redirect('/courses');
+});
+/* Remove course */
+router.post('/remove', async (req, res) => {
+    try {
+        await Course.deleteOne({_id: req.body._id});
+        res.redirect('/courses');
+    } catch (e) {
+        console.log(e);
+    }
 });
 module.exports = router;

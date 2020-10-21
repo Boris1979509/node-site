@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Boris1979509/node-site#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.10.9",
     "pug": "^3.0.0",
     "uuid": "^8.3.1"
   },

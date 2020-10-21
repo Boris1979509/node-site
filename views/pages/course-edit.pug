@@ -18,3 +18,6 @@ block content
             input#img.form-control.is-valid(type='text', name='image', value= course.image)
             div.valid-feedback Error
         button.btn.btn-primary(type='submit') Обновить курс
+    form(action='/courses/remove', method='POST').mt-3
+        input(type='hidden', name='_id', value= course._id)
+        button.btn.btn-danger(type='submit') Удалить курс
