@@ -4,7 +4,7 @@ block title
 block content
     h1= title
     #user-card
-        if (card.length)
+        if (cart.length)
             table.table.table-striped
                 thead
                     tr
@@ -12,7 +12,7 @@ block content
                         th Кол-во
                         th Действие
                 tbody
-                    each val in card
+                    each val in cart
                         tr
                             td= val.title
                             td= val.count

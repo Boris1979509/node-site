@@ -26,7 +26,7 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.addToCart = function (course) {
-    const items = [...this.cart.items];
+    const items = [...this.cart.items]; // Clone
     const idx = items.findIndex(i => { // вернёт индекс обьекта в массиве в случае успеха, -1 если обьект не найден
         return i.courseId.toString() === course._id.toString() // ObjectId to string
     });
@@ -40,5 +40,10 @@ userSchema.methods.addToCart = function (course) {
     this.cart = {items}; //
     return this.save();
 };
-
+userSchema.methods.removeFromCart = function (_id) {
+    const items = [...this.cart.items]; // Clone
+    const idx = items.findIndex(i => { // вернёт индекс обьекта в массиве в случае успеха, -1 если обьект не найден
+        return i.courseId.toString() === _id.toString(); // ObjectId to string
+    });
+};
 module.exports = model('User', userSchema);

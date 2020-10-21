@@ -18,7 +18,7 @@ app.set('view engine', 'pug');
  */
 app.use(async (req, res, next) => {
     try {
-        req.user = await User.findById('5f8ffdfa7e3f20081c135971'); // Запись обьект пользователя в обьект request
+        req.user = await User.findById('5f9077665ef5591dc45c1e1b'); // Запись обьект пользователя в обьект request
         next();
     } catch (e) {
         console.log(e);
